@@ -1,0 +1,20 @@
+{
+  "name": "chat",
+  "version": "0.0.1",
+  "description": "Chatting app",
+  "main": "server.js",
+  "scripts":{
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "author": "David Stoček",
+  "licence": "",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "socket.io": "^3.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

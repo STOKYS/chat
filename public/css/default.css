@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+
+* {
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  color: rgb(255, 255, 255);
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+}
+
+#navigation {
+  float: left;
+  display: table;
+  width: 24.9vw;
+  border: 0.1vh solid black;
+  height: 99.8vh;
+}
+
+#chat {
+  float: left;
+  display: table;
+  width: 74.9vw;
+  border: 0.1vh solid black;
+  height: 99.8vh;
+}
+
+/* Login only */
+
+#login-back {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../img/background.png") !important;
+  background-repeat: no-repeat;
+}
+
+#login-box, #create {
+  position: absolute;
+  padding: 2vh;
+  left: 37.5vw;
+  margin-top: 20vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  width: 25vw;
+  height: 40vh;
+  border: 1px solid #ffcf09;
+  border-left-width: 5px;
+  border-radius: 0px 25px 0px 0px;
+}
+
+#create{
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 1);
+}
+
+#create > h1, h2 {
+  text-align: center;
+}
+
+#create > h1 {
+  font-size: 36px;
+  border-bottom: 1px solid #ffcf09;
+}
+
+#create > h2 {
+  margin-bottom: -0px;
+  font-size: 24px;
+}
+
+#create > form {
+  margin-top: 5%;
+}
+
+#create > form > input, button {
+  margin-bottom: 2%;
+  padding: 5px;
+  width: 100%;
+  background-color: #ffcf09;
+  color: black;
+  border: 1px solid black;
+  /*border: 2px solid #ffcf09;
+  background-color: black;
+  color: #ffcf09;*/
+  outline: none;
+  font-weight: 700;
+}
+
+#create > form > input {
+  font-size: 16px;
+}
+
+#create > form > button {
+  font-size: 20px;
+  transition: background-color 0.5s ease;
+}
+
+#create > form > button:hover {
+  background-color: rgba(255, 207, 9, 0.8);
+}
+
+
+#login-box > h1, h2 {
+    text-align: center;
+}
+
+#login-box > h1 {
+    font-size: 36px;
+    border-bottom: 1px solid #ffcf09;
+}
+
+#login-box > h2 {
+    margin-bottom: -0px;
+    font-size: 24px;
+}
+
+#login-box > form {
+    margin-top: 5%;
+}
+
+#login-box > form > input, button {
+    margin-bottom: 2%;
+    padding: 5px;
+    width: 100%;
+    background-color: #ffcf09;
+    color: black;
+    border: 1px solid black;
+    /*border: 2px solid #ffcf09;
+    background-color: black;
+    color: #ffcf09;*/
+    outline: none;
+    font-weight: 700;
+}
+
+#login-box > form > input {
+    font-size: 16px;
+}
+
+#login-box > form > button {
+    font-size: 20px;
+    transition: background-color 0.5s ease;
+}
+
+#login-box > form > button:hover {
+    background-color: rgba(255, 207, 9, 0.8);
+}
+
+
+
