@@ -1,5 +1,5 @@
-'use strict';
-const fs = require('fs');
+/*'use strict';
+const fs = require('fs');*/
 
 document.getElementById("sign").addEventListener("click", ()=>{
     document.getElementById("create").style.display = "block"
@@ -24,3 +24,8 @@ function new_acc(user){
 function check_valid(){
 
 }
+
+document.getElementById("login").addEventListener("click", ()=>{
+    console.log("helo")
+    document.getElementById("room-select").style.display = "block"
+})

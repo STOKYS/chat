@@ -1,4 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ffcf09;
+  border-radius: 50px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ffd940;
+}
+
+.app{
+  font-family: 'Bebas Neue', cursive;
+  text-align: center;
+}
 
 * {
   margin: 0px;
@@ -9,20 +35,164 @@
   font-weight: 300;
 }
 
+#yourname{
+  font-size: 24px;
+  text-align: center;
+  font-weight: 500;
+}
+
+#roomname{
+  font-size: 24px;
+  text-align: center;
+  font-weight: 500;
+  border-bottom: 1px solid #ffcf09;
+}
+
+header, footer{
+  background-color: rgb(25,25,25);
+}
+
+header > *{
+color: grey;
+font-weight: 500;
+text-align: center;
+}
+
+#users{
+  margin-top: 10px;
+}
+
+#users > *{
+  margin-top: 10px;
+  border: 2px solid #ffcf09;
+  padding: 5px;
+  padding-left: 20px;
+  list-style-type: none;
+  font-weight: 500;
+}
+
 #navigation {
   float: left;
   display: table;
-  width: 24.9vw;
+  width: 19.9vw;
   border: 0.1vh solid black;
   height: 99.8vh;
+  background-color: rgb(25, 25, 25);
+}
+
+#profile {
+  margin-left: 0.5vw;
+  width: 17.9vw;
+  height: 10%;
+  margin-top: 10px;
+  border: 1px solid #ffcf09;
+  padding: 0.5vw;
+}
+
+#selection {
+  margin-left: 0.5vw;
+  margin-top: 10px;
+  width: 17.9vw;
+  height: 80%;
+  border: 1px solid #ffcf09;
+  padding: 0.5vw;
 }
 
 #chat {
   float: left;
   display: table;
-  width: 74.9vw;
+  width: 79.9vw;
   border: 0.1vh solid black;
   height: 99.8vh;
+}
+
+#chat > * {
+  display: table-column;
+  float: left;
+}
+
+#chat > header {
+  /*background-color: #ffcf09;*/
+  height: 5%;
+  width: 100%;
+}
+
+#chat > main {
+  background-image: url("../img/background.png") !important;
+  background-repeat: no-repeat;
+  height: 90%;
+  width: 100%;
+}
+
+#chat > main > #chat-space {
+  overflow-y: visible;
+  max-height: 85vh;
+  height: 85vh;
+  width: 100%;
+}
+
+#chat > main > #chat-input {
+  height: 5%;
+  width: 100%;
+  border-top: 1px solid #ffcf09;
+}
+
+#chat > main > #chat-input > input {
+  display: table-column;
+  float: left;
+  height: 100%;
+  width: 90%;
+  background-color: black;
+  outline: none;
+  padding-left: 5px;
+  font-weight: 500;
+  font-size: large;
+}
+
+#chat > main > #chat-input > button {
+  display: table-column;
+  float: left;
+  width: 9.25%;
+  height: 100%;
+  background-color: #ffcf09;
+  font-weight: 500;
+  font-size: large;
+}
+
+#chat > footer {
+  height: 5%;
+  width: 100%;
+  /*background-color: #ffcf09;*/
+}
+
+.message {
+  margin-top: 2.5%;
+  margin-left: 2.5%;
+  width: 40%;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid #ffcf09;
+}
+
+.message > h1 {
+  background-color: #ffcf09;
+  font-weight: 700;
+  font-size: 12px;
+  color: grey;
+}
+
+.message > h1 > b {
+  background-color: #ffcf09;
+  font-weight: 700;
+  font-size: 12px;
+  color: black;
+}
+
+.message > p {
+  padding: 5px;
+  /* 50,50,50*/
+  background-color: rgba(30, 30, 30, 0.67);
+  color: #ffcf09;
+  font-weight: 400;
 }
 
 /* Login only */
@@ -34,7 +204,9 @@
   background-repeat: no-repeat;
 }
 
-#login-box, #create {
+#login-box,
+#create,
+#room-select {
   position: absolute;
   padding: 2vh;
   left: 37.5vw;
@@ -47,30 +219,37 @@
   border-radius: 0px 25px 0px 0px;
 }
 
-#create{
+#create {
   z-index: 10;
   background-color: rgba(0, 0, 0, 1);
 }
 
-#create > h1, h2 {
+#room-select {
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 1);
+}
+
+.gg > h1,
+h2 {
   text-align: center;
 }
 
-#create > h1 {
+.gg > h1 {
   font-size: 36px;
   border-bottom: 1px solid #ffcf09;
 }
 
-#create > h2 {
+.gg > h2 {
   margin-bottom: -0px;
   font-size: 24px;
 }
 
-#create > form {
+.gg > form {
   margin-top: 5%;
 }
 
-#create > form > input, button {
+.gg > form > input,
+button {
   margin-bottom: 2%;
   padding: 5px;
   width: 100%;
@@ -78,70 +257,21 @@
   color: black;
   border: 1px solid black;
   /*border: 2px solid #ffcf09;
-  background-color: black;
-  color: #ffcf09;*/
+    background-color: black;
+    color: #ffcf09;*/
   outline: none;
   font-weight: 700;
 }
 
-#create > form > input {
+.gg > form > input {
   font-size: 16px;
 }
 
-#create > form > button {
+.gg > form > button {
   font-size: 20px;
   transition: background-color 0.5s ease;
 }
 
-#create > form > button:hover {
+.gg > form > button:hover {
   background-color: rgba(255, 207, 9, 0.8);
 }
-
-
-#login-box > h1, h2 {
-    text-align: center;
-}
-
-#login-box > h1 {
-    font-size: 36px;
-    border-bottom: 1px solid #ffcf09;
-}
-
-#login-box > h2 {
-    margin-bottom: -0px;
-    font-size: 24px;
-}
-
-#login-box > form {
-    margin-top: 5%;
-}
-
-#login-box > form > input, button {
-    margin-bottom: 2%;
-    padding: 5px;
-    width: 100%;
-    background-color: #ffcf09;
-    color: black;
-    border: 1px solid black;
-    /*border: 2px solid #ffcf09;
-    background-color: black;
-    color: #ffcf09;*/
-    outline: none;
-    font-weight: 700;
-}
-
-#login-box > form > input {
-    font-size: 16px;
-}
-
-#login-box > form > button {
-    font-size: 20px;
-    transition: background-color 0.5s ease;
-}
-
-#login-box > form > button:hover {
-    background-color: rgba(255, 207, 9, 0.8);
-}
-
-
-

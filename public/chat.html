@@ -9,32 +9,38 @@
   </head>
   <body>
     <div id="navigation">
-        <div id="profile">
-
+      <div id="profile">
+        <h1 class="app">ChatApp</h1>
+        <h1 id="yourname">You: ${Name}</h1>
+      </div>
+      <div id="selection">
+        <div id="rooms">
+          <div>
+            <h1 id="roomname">Active users</h1>
+          </div>
+          <div id="users">
+          </div>
         </div>
-        <div id="selection">
-            <div id="rooms">
-                <div >
-                    <button>Join New Room</button>
-                </div>
-                <div>
-                    <button>Welcome</button>
-                    <button>IT</button>
-                    <button>Welcome</button>
-                </div>
-            </div>
-            <div id="private">
-                <button>Mike</button>
-                <button>Hawk</button>
-            </div>
-        </div>
+      </div>
     </div>
     <div id="chat">
-      <header id="header"></header>
-      <main id="main">
-
+      <header>
+        <h1 id="header">ChatApp: Room name</h1>
+      </header>
+      <main>
+        <div id="chat-space"></div>
+        <div id="chat-input">
+          <input autocomplete="off" id="input" />
+          <button id="send">SEND</button>
+        </div>
       </main>
-      <footer id="footer"></footer>
+      <footer></footer>
     </div>
   </body>
+  <script
+    src="//cdnjs.cloudflare.com/ajax/libs/qs/6.9.6/qs.min.js"
+    crossorigin="anonymous"
+  ></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/main.js"></script>
 </html>
