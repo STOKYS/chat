@@ -17,13 +17,13 @@ io.on("connection", (socket) => {
 
     socket.join(user.room);
 
-    socket.emit("message", formatMessage("Server", `Welcome to the chat ${user.username}`));
+    socket.emit("message", formatMessage("Server BOT", `Welcome to the chat ${user.username}`));
 
     socket.broadcast
       .to(user.room)
       .emit(
         "message",
-        formatMessage("Server", `${user.username} has joined the chat`)
+        formatMessage("Server BOT", `${user.username} has joined the chat`)
       );
     
       io.to(user.room).emit('roomUsers', {
@@ -33,14 +33,15 @@ io.on("connection", (socket) => {
   });
 
   socket.on("chatMessage", (msg) => {
-      const user = getCurrentUser(socket.id)
-    io.to(user.room).emit("message", formatMessage(user.username, msg));
+    const user = getCurrentUser(socket.id)
+    socket.broadcast.to(user.room).emit("message", formatMessage(user.username, msg), true);
+    socket.emit("message", formatMessage(user.username, msg), false);
   });
 
   socket.on("disconnect", () => {
       const user = userLeave(socket.id)
       if(user){
-        io.to(user.room).emit("message", formatMessage("Server", `${user.username} is no longer with us`));
+        io.to(user.room).emit("message", formatMessage("Server BOT", `${user.username} is no longer with us`));
 
         io.to(user.room).emit('roomUsers', {
             room: user.room,
