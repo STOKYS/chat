@@ -6,7 +6,10 @@ const { username, room } = Qs.parse(location.search, {
 
 document.getElementById("yourname").innerText = `User: ${username}`;
 
-socket.emit("joinRoom", { username, room });
+socket.emit("joinRoom", {
+  username,
+  room,
+});
 
 socket.on("roomUsers", ({ room, users }) => {
   outputRoomName(room);
@@ -18,9 +21,9 @@ socket.on("message", (message, toAll) => {
 });
 
 document.getElementById("chat-input").addEventListener("submit", (event) => {
-  let msg = document.getElementById("input").value
+  let msg = document.getElementById("input").value;
   socket.emit("chatMessage", msg);
-  document.getElementById("chat-input").reset()
+  document.getElementById("chat-input").reset();
   event.preventDefault();
 });
 
@@ -32,8 +35,15 @@ function outputMessage(message, toAll) {
   }
   div.innerHTML = `
     <h1><b>${message.username}</b> ${message.time}</h1>`;
-  console.log(`${message.text.substring(0, 17) == "https://youtu.be/"}, ${message.text.substring(0, 17)}`)
-  if ((message.text.substring(0, 24) == "https://www.youtube.com/") || (message.text.substring(0, 17) == "https://youtu.be/")) {
+  console.log(
+    `${
+      message.text.substring(0, 17) == "https://youtu.be/"
+    }, ${message.text.substring(0, 17)}`
+  );
+  if (
+    message.text.substring(0, 24) == "https://www.youtube.com/" ||
+    message.text.substring(0, 17) == "https://youtu.be/"
+  ) {
     div.innerHTML += `<iframe
         width="620"
         height="360"
@@ -60,9 +70,13 @@ function outputUsers(users) {
 }
 
 function url(text) {
-  let fin = ''
-  console.log(`${text}, ${text.substring(0,18)}, ${text.substring(0,18) == "https://www.youtub"}`)
-  if (text.substring(0,18) == "https://www.youtub"){
+  let fin = "";
+  console.log(
+    `${text}, ${text.substring(0, 18)}, ${
+      text.substring(0, 18) == "https://www.youtub"
+    }`
+  );
+  if (text.substring(0, 18) == "https://www.youtub") {
     fin = text.split("=").pop();
   } else {
     fin = text.split("be/").pop();

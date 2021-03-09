@@ -1,53 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ChatApp</title>
     <link rel="stylesheet" href="css/default.css" />
-  </head>
-  <body>
+</head>
+
+<body>
     <main id="login-back">
-      <div class="gg" id="create" style="display: none;">
-        <h1>Welcome to x</h1>
-        <h2>Create New Account:</h2>
-        <form>
-            <label for="sname">Username:</label><br>
-            <input type="text" id="sname" name="name"><br>
-            <label for="smail">E-mail:</label><br>
-            <input type="email" id="smail" name="mail"><br>
-            <label for="spwd">Password:</label><br>
-            <input type="password" id="spwd" name="pwd">
-            <button type="button" id="created">Submit</button>
-        </form>
-      </div>
-      <div class="gg"  id="room-select" style="display: none;">
-        <h1>Welcome to x</h1>
+        <div class="gg" id="create" style="display: none">
+            <h1>Welcome to ChatApp</h1>
+            <h2>Create New Account:</h2>
+            <form>
+                <label for="sname">Username:</label><br />
+                <input type="text" id="sname" name="name" autocomplete="off" required /><br />
+                <label for="smail">E-mail:</label><br />
+                <input type="email" id="smail" name="mail" autocomplete="off" required /><br />
+                <label for="spwd">Password:</label><br />
+                <input type="password" id="spwd" name="pwd" autocomplete="off" required />
+                <button type="button" id="created">Submit</button>
+            </form>
+        </div>
+        <!--<div class="gg"  id="room-select" style="display: none;">
+        <h1>Welcome to ChatApp</h1>
         <h2>Join room:</h2>
         <form action="chat.html">
             <label for="name">Name: </label><br>
-            <input type="text" id="name" name="username"><br>
+            <input type="text" id="name" name="username" autocomplete="off" required><br>
             <label for="room">Room code: </label><br>
-            <input type="text" id="room" name="room"><br>
+            <input type="text" id="room" name="room" autocomplete="off" required><br>
             <button id="join">Submit</button>
         </form>
-      </div>
-      <div  class="gg" id="login-box">
-        <h1>Welcome to x</h1>
-        <h2>Please log-in to continue:</h2>
-        <form>
-          <label for="mail">E-mail:</label><br />
-          <input type="email" id="mail" name="mail" /><br />
-          <label for="pwd">Password:</label><br />
-          <input type="password" id="pwd" name="pwd" />
-          <button type="button" id='login'>Submit</button>
-        </form>
-        <form>
-          <button id="sign" type="button">Create Account</button>
-        </form>
-      </div>
+      </div>-->
+        <div class="gg" id="login-box">
+            <h1>Welcome to ChatApp</h1>
+            <h2>Please log-in to continue:</h2>
+            <form action="chat.html">
+                <label for="mail">E-mail:</label><br />
+                <input type="email" id="mail" name="mail" autocomplete="off" required /><br />
+                <label for="pwd">Password:</label><br />
+                <input type="password" id="pwd" name="pwd" autocomplete="off" required />
+                <button type="button" id="login">Submit</button>
+            </form>
+            <form>
+                <button id="sign" type="button">Create Account</button>
+            </form>
+        </div>
     </main>
-  </body>
-  <script src="js/sign.js"></script>
+</body>
+<script src="//cdnjs.cloudflare.com/ajax/libs/qs/6.9.6/qs.min.js" crossorigin="anonymous"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/sign.js"></script>
+
 </html>

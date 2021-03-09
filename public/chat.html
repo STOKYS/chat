@@ -1,46 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ChatApp</title>
     <link rel="stylesheet" href="css/default.css" />
-  </head>
-  <body>
+</head>
+
+<body>
     <div id="navigation">
-      <div id="profile">
-        <h1 class="app">ChatApp</h1>
-        <h1 id="yourname">You: ${Name}</h1>
-      </div>
-      <div id="selection">
-        <div id="rooms">
-          <div>
-            <h1 id="roomname">Active users</h1>
-          </div>
-          <div id="users">
-          </div>
+        <div id="profile">
+            <h1 class="app">ChatApp</h1>
+            <h1 id="yourname">You: ${Name}</h1>
         </div>
-      </div>
+        <div id="selection">
+            <div id="rooms">
+                <div>
+                    <h1 id="roomname">Active users</h1>
+                </div>
+                <div id="users"></div>
+            </div>
+        </div>
     </div>
     <div id="chat">
-      <header>
-        <h1 id="header">ChatApp: Room name</h1>
-      </header>
-      <main>
-        <div id="chat-space"></div>
-        <form id="chat-input">
-          <input autocomplete="off" id="input"/>
-          <button id="send" type="submit">SEND</button> 
-        </form>
-      </main>
-      <footer></footer>
+        <header>
+            <h1 id="header">ChatApp: Room name</h1>
+        </header>
+        <main>
+            <div id="chat-space"></div>
+            <form id="chat-input">
+                <input autocomplete="off" id="input" />
+                <button id="send" type="submit">SEND</button>
+            </form>
+        </main>
+        <footer></footer>
     </div>
-  </body>
-  <script
-    src="//cdnjs.cloudflare.com/ajax/libs/qs/6.9.6/qs.min.js"
-    crossorigin="anonymous"
-  ></script>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="js/main.js"></script>
+</body>
+<script src="//cdnjs.cloudflare.com/ajax/libs/qs/6.9.6/qs.min.js" crossorigin="anonymous"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/main.js"></script>
+
 </html>
