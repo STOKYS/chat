@@ -3,6 +3,7 @@ const http = require("http");
 const express = require("express");
 const socketio = require("socket.io");
 const formatMessage = require("./utils/message.js");
+const idCreator = require("./utils/coder.js");
 const {
   userJoin,
   getCurrentUser,
@@ -20,6 +21,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 io.on("connection", (socket) => {
   console.log("connected");
+  console.log(socket.id);
   socket.on("joinRoom", ({ username, room }) => {
     const user = userJoin(socket.id, username, room);
 
@@ -54,7 +56,7 @@ io.on("connection", (socket) => {
   socket.on("createUser", (user) => {
     let old;
     let valid = true;
-    fs.readFile("./users.json", "utf8", (err, jsonString) => {
+    fs.readFile("data/users.json", "utf8", (err, jsonString) => {
       if (err) {
         console.log("File read failed:", err);
         return;
@@ -67,9 +69,11 @@ io.on("connection", (socket) => {
       let arr = [];
       let fin;
       if (old == "") {
+        user.id = idCreator();
+        console.log(user);
         arr.push(user);
         fin = JSON.stringify(arr);
-        fs.writeFile("users.json", fin, (err) => {
+        fs.writeFile("data/users.json", fin, (err) => {
           if (err) {
             throw err;
           }
@@ -82,9 +86,20 @@ io.on("connection", (socket) => {
           }
         }
         if (valid) {
+          let validity = true;
+          do {
+            user.id = idCreator();
+            for (let i = 0; i < old.length; i++) {
+              if (old[i].id == user.id) {
+                validity = false;
+                break;
+              }
+            }
+          } while (!validity);
+          console.log(user);
           old.push(user);
           fin = JSON.stringify(old);
-          fs.writeFile("users.json", fin, (err) => {
+          fs.writeFile("data/users.json", fin, (err) => {
             if (err) {
               throw err;
             }
@@ -97,24 +112,43 @@ io.on("connection", (socket) => {
 
   socket.on("logUser", (user) => {
     let old;
-    fs.readFile("./users.json", "utf8", (err, jsonString) => {
+    fs.readFile("data/users.json", "utf8", (err, jsonString) => {
       if (err) {
         console.log("File read failed:", err);
         return;
       }
       if (jsonString) {
         old = JSON.parse(jsonString);
-        console.log(old)
+        console.log(old);
         for (let i = 0; i < old.length; i++) {
           if (old[i].pwd == user.pwd && old[i].mail == user.mail) {
-            console.log("true")
+            socket.emit("goTo", {link: `profile.html`, id: old[i].id});
           }
         }
       } else {
-        console.log("false")
+        console.log("false");
       }
     });
   });
+
+  socket.on("profileLoad", (id) => {
+    fs.readFile("data/users.json", "utf8", (err, jsonString) => {
+      if (err) {
+        console.log("File read failed:", err);
+        return;
+      }
+      if (jsonString) {
+        let old = JSON.parse(jsonString);
+        for (let i = 0; i < old.length; i++) {
+          if (old[i].id == id) {
+            socket.emit("userFound", old[i]);
+          }
+        }
+      } else {
+        console.log("false");
+      }
+    });
+  })
 
   socket.on("disconnect", () => {
     const user = userLeave(socket.id);

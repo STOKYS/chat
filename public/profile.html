@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatApp - Profile</title>
+    <link rel="stylesheet" href="css/default_profile.css">
+</head>
+
+<body>
+    <div id="navigation">
+        <div id="profile">
+            <h1 class="title">PROFILE</h1>
+            <div class="icon">
+                <img src="img/avatar.jpg">
+            </div>
+            <div class="info">
+                <h1 id="yourname">${Name}</h1>
+                <h2 id="yourmail">${Mail}</h2>
+            </div>
+        </div>
+        <div id="activities">
+            <div id="chatrooms">
+                <h1 class="title">CHATROOMS</h1>
+                <button class="mainbtn" id="createRoom">+ JOIN ROOM</button>
+                <hr>
+            </div>
+            <div id="friends">
+                <h1 class="title">FRIENDS</h1>
+                <button class="mainbtn">+ YOU HAVE NONE</button>
+                <hr>
+            </div>
+            <div id="games">
+                <h1 class="title">GAMES</h1>
+                <button class="mainbtn">+ ADD GAME</button>
+                <hr>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="//cdnjs.cloudflare.com/ajax/libs/qs/6.9.6/qs.min.js" crossorigin="anonymous"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/profile.js"></script>
+
+</html>

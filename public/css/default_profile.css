@@ -1,0 +1,165 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500&display=swap');
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: black;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #ffcf09;
+    border-radius: 50px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #ffd940;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    color: rgb(255, 255, 255);
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+}
+
+
+#navigation {
+    float: left;
+    display: table;
+    width: 29.9vw;
+    border: 0.1vh solid black;
+    height: 100%;
+    background-color: rgb(25, 25, 25);
+}
+
+#profile {
+    width: 28vw;
+    margin: auto;
+    margin-top: 2.5vh;
+    height: 25vh;
+    padding: 0px;
+    border: solid #ffcf09 1px;
+}
+
+#chatrooms{
+    width: 28vw;
+    margin: auto;
+    margin-top: 2.5vh;
+    height: 33vh;
+    padding: 0px;
+    border: solid #ffcf09 1px;
+    overflow-y: auto;
+}
+
+#friends{
+    width: 28vw;
+    margin: auto;
+    height: 33vh;
+    padding: 0px;
+    border: solid #ffcf09 1px;
+    overflow-y: auto;
+}
+
+
+#games{
+    margin-top: 2.5vh;
+    width: 28vw;
+    margin: auto;
+    height: 33vh;
+    padding: 0px;
+    border: solid #ffcf09 1px;
+    overflow-y: auto;
+}
+
+.title {
+    border-bottom: 1px solid black;
+    font-family: 'Roboto Mono';
+    font-weight: 500;
+    width: 100%;
+    margin: 0;
+    padding: 5px;
+    background-color: #ffcf09;
+    font-size: 15px;
+    color: grey;
+    position: sticky;
+    top: 0;
+}
+
+.icon {
+    float: left;
+    height: 15vh;
+    width: 15vh;
+    margin: 20px 0px;
+}
+
+.info{
+    float: left;
+    padding: 20px;
+}
+
+.icon>img {
+    height: 100%;
+    width: 100%;
+}
+
+.mainbtn{
+    width: 95%;
+    height: 50px;
+    margin: 2.5% 2.5%;
+    background-color: #ffcf09;
+    color:  rgb(25, 25, 25);
+    font-weight: 600;
+    font-size: 20px;
+}
+
+hr{
+    border: 0;
+    border-bottom: 1px solid #ffcf09;
+    width: 90%;
+    margin: auto;
+}
+
+#activities{
+    width: 100%;
+    height: 2000px;
+    overflow-y: scroll;
+}
+
+.room{
+    width: 95%;
+    height: 35px;
+    margin: 2.5% 2.5%;
+    background-color: #ffcf09;
+    color:  rgb(25, 25, 25);
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.roombtn{
+    color:  rgb(25, 25, 25);
+    font-weight: 600;
+    font-size: 15px;
+    width: 80%;
+    float: left;
+    height: 100%;
+    background-color: #ffcf09;
+}
+
+.removeroom{
+    color:  rgb(25, 25, 25);
+    font-weight: 600;
+    font-size: 15px;
+    float: left;
+    height: 100%;
+    width: 20%;
+    background-color: #ff5709;
+}

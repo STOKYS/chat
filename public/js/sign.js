@@ -19,5 +19,11 @@ document.getElementById("login").addEventListener("click", () => {
     mail: document.getElementById("mail").value,
     pwd: document.getElementById("pwd").value,
   };
-  socket.emit("logUser", user)
+  socket.emit("logUser", user);
+});
+
+socket.on("goTo", ({ link, id }) => {
+  document.cookie = id;
+  console.log(decodeURIComponent(document.cookie))
+  window.open(`${window.location.href}${link}`);
 });
