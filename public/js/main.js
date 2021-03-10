@@ -1,15 +1,18 @@
 const socket = io();
 
-const { username, room } = Qs.parse(location.search, {
+const room = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
 });
 
-document.getElementById("yourname").innerText = `User: ${username}`;
+socket.emit("profileLoad", document.cookie)
 
-socket.emit("joinRoom", {
-  username,
-  room,
-});
+socket.on("userFound", (user) => {
+    document.getElementById("yourname").innerText = `User: ${user.name}`;
+    socket.emit("joinRoom", {
+        username: user.name,
+        room: room.room,
+    });
+})
 
 socket.on("roomUsers", ({ room, users }) => {
   outputRoomName(room);

@@ -9,6 +9,9 @@ document.getElementById("created").addEventListener("click", () => {
     name: document.getElementById("sname").value,
     mail: document.getElementById("smail").value,
     pwd: document.getElementById("spwd").value,
+    room: ["rm_all"],
+    friend: ["user_admin"],
+    status: "Nothing"
   };
   document.getElementById("create").style.display = "none";
   socket.emit("createUser", user);

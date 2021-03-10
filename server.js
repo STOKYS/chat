@@ -20,8 +20,6 @@ const io = socketio(server);
 app.use(express.static(path.join(__dirname, "public")));
 
 io.on("connection", (socket) => {
-  console.log("connected");
-  console.log(socket.id);
   socket.on("joinRoom", ({ username, room }) => {
     const user = userJoin(socket.id, username, room);
 
@@ -51,6 +49,10 @@ io.on("connection", (socket) => {
       .to(user.room)
       .emit("message", formatMessage(user.username, msg), true);
     socket.emit("message", formatMessage(user.username, msg), false);
+  });
+
+  socket.on("postCreate", (data) => {
+    io.to("profile").emit("post", formatMessage(data.user, data.text));
   });
 
   socket.on("createUser", (user) => {
@@ -122,7 +124,7 @@ io.on("connection", (socket) => {
         console.log(old);
         for (let i = 0; i < old.length; i++) {
           if (old[i].pwd == user.pwd && old[i].mail == user.mail) {
-            socket.emit("goTo", {link: `profile.html`, id: old[i].id});
+            socket.emit("goTo", { link: `profile.html`, id: old[i].id });
           }
         }
       } else {
@@ -132,6 +134,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("profileLoad", (id) => {
+    socket.join("profile");
     fs.readFile("data/users.json", "utf8", (err, jsonString) => {
       if (err) {
         console.log("File read failed:", err);
@@ -148,7 +151,65 @@ io.on("connection", (socket) => {
         console.log("false");
       }
     });
-  })
+  });
+
+  socket.on("createRoom", (data) => {
+    console.log("-----START-----");
+    console.log(data.code);
+    console.log(data.user);
+    console.log("------END------");
+    fs.readFile("data/users.json", "utf8", (err, jsonString) => {
+      if (err) {
+        console.log("File read failed:", err);
+        return;
+      }
+      let old = JSON.parse(jsonString);
+      for (let i = 0; i < old.length; i++) {
+        if (old[i].id == data.user.id) {
+          old[i].room.push(`rm_${data.code}`);
+        }
+      }
+      let fin = JSON.stringify(old);
+      fs.writeFile("data/users.json", fin, (err) => {
+        if (err) {
+          throw err;
+        }
+        console.log("JSON data is saved.");
+      });
+    });
+  });
+
+  socket.on("removeRoom", (data) => {
+    fs.readFile("data/users.json", "utf8", (err, jsonString) => {
+      if (err) {
+        console.log("File read failed:", err);
+        return;
+      }
+      let old = JSON.parse(jsonString);
+      for (let i = 0; i < old.length; i++) {
+        if (old[i].id == data.user.id) {
+          for (let j = 0; j < old[i].room.length; j++) {
+            if (old[i].room[j] == `rm_${data.code}`) {
+              old[i].room.splice(j, 1);
+            }
+          }
+        }
+      }
+      let fin = JSON.stringify(old);
+      fs.writeFile("data/users.json", fin, (err) => {
+        if (err) {
+          throw err;
+        }
+        console.log("JSON data is saved.");
+      });
+    });
+  });
+
+  /*
+    Finish that
+
+    Then fugure out how to send name to the chat itself
+*/
 
   socket.on("disconnect", () => {
     const user = userLeave(socket.id);

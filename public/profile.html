@@ -19,25 +19,33 @@
             <div class="info">
                 <h1 id="yourname">${Name}</h1>
                 <h2 id="yourmail">${Mail}</h2>
+                <p id="yourstatus">${status}</p>
             </div>
         </div>
-        <div id="activities">
-            <div id="chatrooms">
-                <h1 class="title">CHATROOMS</h1>
-                <button class="mainbtn" id="createRoom">+ JOIN ROOM</button>
-                <hr>
-            </div>
-            <div id="friends">
-                <h1 class="title">FRIENDS</h1>
-                <button class="mainbtn">+ YOU HAVE NONE</button>
-                <hr>
-            </div>
-            <div id="games">
-                <h1 class="title">GAMES</h1>
-                <button class="mainbtn">+ ADD GAME</button>
-                <hr>
-            </div>
+        <div id="chatrooms">
+            <h1 class="title">CHATROOMS</h1>
+            <button class="mainbtn" id="createRoom">+ ADD ROOM</button>
+            <hr>
         </div>
+        <div id="friends">
+            <h1 class="title">FRIENDS</h1>
+            <button class="mainbtn">+ ADD FRIEND</button>
+            <hr>
+        </div>
+    </div>
+    <div id="board">
+        <header>
+            <button id="settings">SETTINGS</button>
+        </header>
+        <main>
+            <div id="postspace">
+                
+            </div>
+        </main>
+        <footer>
+            <button id="createPost">CREATE POST</button>
+
+        </footer>
     </div>
 </body>
 <script src="//cdnjs.cloudflare.com/ajax/libs/qs/6.9.6/qs.min.js" crossorigin="anonymous"></script>
