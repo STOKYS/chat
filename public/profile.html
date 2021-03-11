@@ -10,6 +10,18 @@
 </head>
 
 <body>
+    <div id="popup_post" class="popup">
+        <h1>Write your post!</h1>
+        <textarea placeholder="Describe yourself here..." rows="10"></textarea>
+    </div>
+    <div id="popup_room" class="popup">
+        <h1>Type room code</h1>
+        <form>
+            <label for="popup_room_input">Password:</label><br />
+            <input type="password" id="popup_room_input" name="room" autocomplete="off" required placeholder="Room code"/>
+            <button type="button" id="popup_room_submit">Submit</button>
+        </form>
+    </div>
     <div id="navigation">
         <div id="profile">
             <h1 class="title">PROFILE</h1>
@@ -19,7 +31,10 @@
             <div class="info">
                 <h1 id="yourname">${Name}</h1>
                 <h2 id="yourmail">${Mail}</h2>
-                <p id="yourstatus">${status}</p>
+                <textarea id="yourstatus">
+                    ${status}
+                </textarea>
+                <button onclick="updateBio()">Update status</button>
             </div>
         </div>
         <div id="chatrooms">
@@ -35,7 +50,7 @@
     </div>
     <div id="board">
         <header>
-            <button id="settings">SETTINGS</button>
+            <h1>ChatApp Feed</h1>
         </header>
         <main>
             <div id="postspace">

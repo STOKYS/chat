@@ -52,7 +52,38 @@ io.on("connection", (socket) => {
   });
 
   socket.on("postCreate", (data) => {
-    io.to("profile").emit("post", formatMessage(data.user, data.text));
+    let randId = idCreator();
+    io.to("profile").emit("post", formatMessage(data.user, data.text), randId);
+  });
+
+  socket.on("postComment", (data) => {
+    io.to("profile").emit("postCommented", data);
+  });
+
+  socket.on("updateBio", (data) => {
+    data.value;
+    data.user;
+    fs.readFile("data/users.json", "utf8", (err, jsonString) => {
+      if (err) {
+        console.log("File read failed:", err);
+        return;
+      }
+      if (jsonString) {
+        let old = JSON.parse(jsonString);
+        for (let i = 0; i < old.length; i++) {
+          if (old[i].id == data.user) {
+            old[i].status = data.value;
+            fin = JSON.stringify(old);
+            fs.writeFile("data/users.json", fin, (err) => {
+              if (err) {
+                throw err;
+              }
+              console.log("JSON data is saved.");
+            });
+          }
+        }
+      }
+    });
   });
 
   socket.on("createUser", (user) => {
@@ -72,7 +103,6 @@ io.on("connection", (socket) => {
       let fin;
       if (old == "") {
         user.id = idCreator();
-        console.log(user);
         arr.push(user);
         fin = JSON.stringify(arr);
         fs.writeFile("data/users.json", fin, (err) => {
@@ -98,7 +128,6 @@ io.on("connection", (socket) => {
               }
             }
           } while (!validity);
-          console.log(user);
           old.push(user);
           fin = JSON.stringify(old);
           fs.writeFile("data/users.json", fin, (err) => {
@@ -121,7 +150,6 @@ io.on("connection", (socket) => {
       }
       if (jsonString) {
         old = JSON.parse(jsonString);
-        console.log(old);
         for (let i = 0; i < old.length; i++) {
           if (old[i].pwd == user.pwd && old[i].mail == user.mail) {
             socket.emit("goTo", { link: `profile.html`, id: old[i].id });
@@ -154,10 +182,6 @@ io.on("connection", (socket) => {
   });
 
   socket.on("createRoom", (data) => {
-    console.log("-----START-----");
-    console.log(data.code);
-    console.log(data.user);
-    console.log("------END------");
     fs.readFile("data/users.json", "utf8", (err, jsonString) => {
       if (err) {
         console.log("File read failed:", err);
@@ -204,12 +228,6 @@ io.on("connection", (socket) => {
       });
     });
   });
-
-  /*
-    Finish that
-
-    Then fugure out how to send name to the chat itself
-*/
 
   socket.on("disconnect", () => {
     const user = userLeave(socket.id);

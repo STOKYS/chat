@@ -31,11 +31,15 @@
     font-weight: 300;
 }
 
+*>button {
+    border: 1px solid black;
+}
+
 
 #navigation {
     float: left;
     display: table;
-    width: 29.9vw;
+    width: 29.9%;
     border: 0.1vh solid black;
     height: 100vh;
     background-color: rgb(25, 25, 25);
@@ -96,13 +100,13 @@
 
 .icon {
     float: left;
-    height: 15vh;
-    width: 15vh;
-    margin: 20px 0px;
+    width: 25%;
+    margin: 33px 0px;
 }
 
 .info {
     float: left;
+    width: 65%;
     padding: 20px;
 }
 
@@ -145,7 +149,8 @@ hr {
     width: 80%;
     float: left;
     height: 100%;
-    background-color: #ffcf09;
+    background-color: rgb(70, 70, 70);
+    color: #ffcf09;
 }
 
 .removeroom {
@@ -160,24 +165,25 @@ hr {
 
 #board {
     float: left;
-    width: 70vw;
+    width: 69.99%;
     background-color: rgb(40, 40, 40);
     height: 100vh;
 }
 
-header{
+header {
     height: 5%;
     width: 100%;
+    text-align: center;
 }
 
-main{
+main {
     background-image: url("../img/background.png");
     background-repeat: no-repeat;
     height: 90%;
     width: 100%;
 }
 
-#postspace{
+#postspace {
     overflow-y: visible;
     height: 100%;
     width: 100%;
@@ -188,7 +194,7 @@ footer {
     width: 100%;
 }
 
-#createPost{
+#createPost {
     width: 100%;
     height: 100%;
     background-color: #000000;
@@ -199,6 +205,123 @@ footer {
     outline: none;
 }
 
-.post{
+.post {
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
+    max-height: max-content;
+    background-color: rgb(30, 30, 30);
+    border: 2px solid rgb(10, 10, 10);
+}
 
+.post_heading {
+    background-color: rgb(20, 20, 20);
+    border-bottom: 2px solid rgb(10, 10, 10);
+    padding: 5px;
+}
+
+.post_content {
+    background-color: rgb(30, 30, 30);
+    padding: 20px 8px;
+}
+
+.post_heading>h1 {
+    color: rgb(220, 220, 220)
+}
+
+.post_heading>h2 {
+    color: rgb(80, 80, 80);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.post_content>p {
+    font-weight: 500;
+}
+
+.post_comments {
+    background-color: rgb(20, 20, 20);
+    border-top: 1px solid rgb(10, 10, 10);
+    padding: 5px;
+    width: 100%;
+}
+
+.post_comments>h3 {
+    text-align: center;
+    color: rgb(80, 80, 80);
+    font-weight: 500;
+}
+
+.post_comments>button {
+    width: 40%;
+    margin-left: 30%;
+    height: 30px;
+    font-size: 15px;
+    background-color: rgb(20, 20, 20);
+    border: 1px solid grey;
+}
+
+.post_comment {
+    padding: 5px;
+    border-bottom: 1px solid rgb(50, 50, 50);
+    margin-bottom: 10px;
+}
+
+.post_comment_heading>h1 {
+    font-size: 14px;
+    color: rgb(70, 70, 70);
+    font-weight: 500;
+}
+
+.post_comment_content>p {
+    font-size: 14px;
+}
+
+.popup {
+    padding: 8px;
+    position: absolute;
+    width: 30%;
+    height: 30%;
+    left: 35%;
+    top: 35%;
+    background-color: rgba(30, 30, 30, 0.75);
+    border: 1px solid #ffcf09;
+    border-left-width: 5px;
+    border-radius: 0px 25px 0px 0px;
+}
+
+.popup > h1 {
+    text-align: center;
+    border-bottom: 1px solid #ffcf09;
+    font-size: 28px;
+    font-weight: 500;
+    padding-bottom: 5px;
+}
+
+.info > textarea{
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    background-color: rgb(30,30,30);
+    border-radius: 10px;
+    resize: none;
+    border: 1px solid rgb(50,50,50);
+}
+
+.info > button{
+    width: 100%;
+    margin: auto;
+    background-color: rgb(30,30,30);
+    border: 1px solid rgb(50,50,50);
+}
+
+.popup > textarea{
+    width: 90%;
+    margin-top: 15px;
+    margin-left: 3%;
+    background-color: rgb(50,50,50);
+    resize: none;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: 600;
 }

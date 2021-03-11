@@ -1,4 +1,5 @@
 const socket = io();
+const awch = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 let you = "";
 
 window.addEventListener("load", function () {
@@ -64,6 +65,29 @@ function outputPost(data) {
   const div = document.createElement("div");
   div.classList.add("post");
   div.innerHTML = `
-      <h1><b>${data.username}</b> ${data.time}</h1><br><p>${data.text}</p>`;
+      <div class="post_heading"><h1>${data.username}</h1> <h2>${data.time}</h2></div><div class="post_content"><p>${data.text}</p></div><div id="comments_${data.id}" class="post_comments"><h3>Comments</h3><button onclick="createCommentik('${data.id}')">Post comment</button></div>`; /*  */
   document.getElementById("postspace").appendChild(div);
+}
+
+function createCommentik(id){
+    console.log("hello")
+    let x = prompt("What do you wanna comment?");
+    socket.emit("postComment", { text: x, user: you.name, id: id});
+}
+
+socket.on("postCommented", (data) => {
+    outputComment(data)
+})
+
+function outputComment(data) {
+    const div = document.createElement("div");
+    div.classList.add("post_comment");
+    div.innerHTML = `
+        <div class="post_comment_heading"><h1>${data.user}</h1></div><div class="post_comment_content"><p>${data.text}</p></div>`;
+    document.getElementById(`comments_${data.id}`).appendChild(div);
+}
+
+function updateBio(){
+    let value = document.getElementById("yourstatus").value
+    socket.emit("updateBio", { value: value, user: you.id})
 }
