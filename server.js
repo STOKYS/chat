@@ -19,6 +19,8 @@ const io = socketio(server);
 
 app.use(express.static(path.join(__dirname, "public")));
 
+let game_rooms = {}
+
 io.on("connection", (socket) => {
   socket.on("joinRoom", ({ username, room }) => {
     const user = userJoin(socket.id, username, room);
@@ -43,11 +45,38 @@ io.on("connection", (socket) => {
     });
   });
 
+  socket.on("joinGameRoom", ({ username, room }) => {
+    const user = userJoin(socket.id, username, room);
+    socket.join(user.room);
+    if (!game_rooms[user.room]){
+        game_rooms[user.room] = 1
+    } else {
+        game_rooms[user.room]++
+    }
+    socket.emit("yourplace", game_rooms[user.room])
+    io.to(user.room).emit("serverConsole", `${username} has joined the game`)
+  })
+
+  socket.on("gameStarted", (you)=>{
+      const user = getCurrentUser(socket.id);
+    io.to(user.room).emit("gameStartedClient", (you))
+    io.to(user.room).emit("serverConsole", `${user.username} has started the game`)
+  })
+
+  socket.on("gameEnded", (you)=>{
+    const user = getCurrentUser(socket.id);
+  io.to(user.room).emit("gameEndedClient", (you))
+  io.to(user.room).emit("serverConsole", `${user.username} has started the game`)
+})
+
+  socket.on("gameNewRound", (tiles)=>{
+    const user = getCurrentUser(socket.id);
+    socket.broadcast.to(user.room).emit("gameNewRoundClient", (tiles))
+  })
+
   socket.on("chatMessage", (msg) => {
     const user = getCurrentUser(socket.id);
-    socket.broadcast
-      .to(user.room)
-      .emit("message", formatMessage(user.username, msg), true);
+    socket.broadcast.to(user.room).emit("message", formatMessage(user.username, msg), true);
     socket.emit("message", formatMessage(user.username, msg), false);
   });
 
@@ -142,6 +171,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("logUser", (user) => {
+      console.log(user)
     let old;
     fs.readFile("data/users.json", "utf8", (err, jsonString) => {
       if (err) {
@@ -150,8 +180,10 @@ io.on("connection", (socket) => {
       }
       if (jsonString) {
         old = JSON.parse(jsonString);
+        console.log(old)
         for (let i = 0; i < old.length; i++) {
           if (old[i].pwd == user.pwd && old[i].mail == user.mail) {
+              console.log(old[i].id)
             socket.emit("goTo", { link: `profile.html`, id: old[i].id });
           }
         }
@@ -181,6 +213,29 @@ io.on("connection", (socket) => {
     });
   });
 
+  socket.on("gameLoad", (id) => {
+    fs.readFile("data/users.json", "utf8", (err, jsonString) => {
+      if (err) {
+        console.log("File read failed:", err);
+        return;
+      }
+      if (jsonString) {
+        let old = JSON.parse(jsonString);
+        for (let i = 0; i < old.length; i++) {
+          if (old[i].id == id) {
+            socket.emit("userGameFound", old[i]);
+          }
+        }
+      } else {
+        console.log("false");
+      }
+    });
+  });
+
+  socket.on("sendingInvite", ({ him, you, code })=>{
+    socket.broadcast.to("profile").emit("gameInviteAcc", {t: him, f: you, c: code})
+  })
+
   socket.on("createRoom", (data) => {
     fs.readFile("data/users.json", "utf8", (err, jsonString) => {
       if (err) {
@@ -203,6 +258,39 @@ io.on("connection", (socket) => {
     });
   });
 
+  socket.on("createFriend", (data) => {
+    fs.readFile("data/users.json", "utf8", (err, jsonString) => {
+      if (err) {
+        console.log("File read failed:", err);
+        return;
+      }
+      let old = JSON.parse(jsonString);
+      for (let i = 0; i < old.length; i++) {
+        if (old[i].id == data.user.id) {
+          for (let j = 0; j < old.length; j++) {
+            if (old[j].name == data.code) {
+              old[i].friend.push(`user_${data.code}`);
+            }
+          }
+        }
+      }
+      let fin = JSON.stringify(old);
+      fs.writeFile("data/users.json", fin, (err) => {
+        if (err) {
+          throw err;
+        }
+        console.log("JSON data is saved.");
+      });
+    });
+  });
+
+  /*socket.on('image', image => {
+    // image is an array of bytes
+    const buffer = Buffer.from(image);
+    console.log(buffer)
+    fs.writeFile('data/pog.json', buffer)// fs.promises
+});*/
+
   socket.on("removeRoom", (data) => {
     fs.readFile("data/users.json", "utf8", (err, jsonString) => {
       if (err) {
@@ -215,6 +303,47 @@ io.on("connection", (socket) => {
           for (let j = 0; j < old[i].room.length; j++) {
             if (old[i].room[j] == `rm_${data.code}`) {
               old[i].room.splice(j, 1);
+            }
+          }
+        }
+      }
+      let fin = JSON.stringify(old);
+      fs.writeFile("data/users.json", fin, (err) => {
+        if (err) {
+          throw err;
+        }
+        console.log("JSON data is saved.");
+      });
+    });
+  });
+
+  socket.on("getFriendProfile", (data) => {
+    fs.readFile("data/users.json", "utf8", (err, jsonString) => {
+      if (err) {
+        console.log("File read failed:", err);
+        return;
+      }
+      let old = JSON.parse(jsonString);
+      for (let i = 0; i < old.length; i++) {
+        if (old[i].name == data) {
+          socket.emit("showProfile", old[i]);
+        }
+      }
+    });
+  });
+
+  socket.on("removeFriend", (data) => {
+    fs.readFile("data/users.json", "utf8", (err, jsonString) => {
+      if (err) {
+        console.log("File read failed:", err);
+        return;
+      }
+      let old = JSON.parse(jsonString);
+      for (let i = 0; i < old.length; i++) {
+        if (old[i].id == data.user.id) {
+          for (let j = 0; j < old[i].friend.length; j++) {
+            if (old[i].friend[j] == `user_${data.code}`) {
+              old[i].friend.splice(j, 1);
             }
           }
         }

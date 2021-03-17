@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Neucha&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+canvas {
+    border: 1px solid black;
+}
+
+.game {
+    width: 895px;
+    height: 895px;
+    float: left;
+}
+
+.controls {
+    display: table;
+    width: 1000px;
+    height: 895px;
+    border: 1px solid black;
+    float: right;
+}
+
+.controls>* {
+    padding: 5px 8px 5px 8px;
+    margin: auto;
+    margin-top: 20px;
+    width: 90%;
+    border: 1px solid black;
+}
+
+.info>h1,
+h2,
+h3 {
+    text-align: center;
+    font-family: 'Neucha', cursive;
+}
+
+#console {
+    width: 48.75%;
+    padding-left: 10px;
+    overflow-y: auto;
+    background-color: rgb(0, 0, 0);
+}
+
+#console>p {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 12px;
+    font-family: 'Share Tech Mono', monospace;
+    color: rgb(67, 119, 83)
+}
+
+#console>h1{
+    position: fixed;
+    right: 28%;
+    font-size: 18px;
+    font-family: 'Share Tech Mono', monospace;
+    color: rgb(67, 119, 83)
+}
+
+.data {
+    height: 450px;
+}
+
+.data>div {
+    width: 49.75%;
+    float: left;
+    display: table-column;
+    height: 100%;
+    max-height: 100%;
+}
+
+button {
+    display: table;
+    float: left;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: rgba(200, 200, 200, 1);
+    padding: 10px;
+    font-size: 25px;
+    box-shadow: 3px 8px 15px 0px rgb(100, 100, 100);
+    transition: background-color 1s ease, color 0.2s ease;
+}
+
+button:hover {
+    background-color: royalblue;
+    color: white;
+}
+
+.main_btn>button {
+    width: 50%;
+    display: table-column;
+    float: left;
+}
+
+.side_btn>button {
+    width: 33.33%;
+    display: table-column;
+    float: left;
+    padding: 5px;
+    font-size: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td,
+th {
+    height: 22px;
+    border: 1px solid black;
+}
+
+td{
+    padding-left: 10px
+}
+
+input[type=range] {
+    float: left;
+    width: 49.5%
+}
+
+.side_btn>p {
+    padding: 0px;
+    margin: 10px 0px 3px 0px;
+    width: 50%;
+    float: left;
+}
+
+@media screen and (max-width: 1000px) {
+    .game {
+        float: none;
+        width: 100%;
+        margin: 0;
+    }
+    .controls {
+        float:  none;
+        width: 100%;
+        margin: 0;
+    }
+}

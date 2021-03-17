@@ -118,7 +118,7 @@ text-align: center;
 }
 
 #chat > main {
-  background-image: url("../img/background.png") !important;
+  background-image: url("../img/background.jpg") !important;
   background-repeat: no-repeat;
   height: 90%;
   width: 100%;
@@ -139,17 +139,27 @@ text-align: center;
   border-top: 1px solid #ffcf09;
 }
 
-#chat > main > #chat-input > input {
+#chat > main > #chat-input > input[type=text] {
   display: table-column;
   float: left;
   height: 100%;
-  width: 90%;
+  width: 80%;
   background-color: black;
   outline: none;
   padding-left: 5px;
   font-weight: 500;
   font-size: large;
 }
+
+#chat > main > #chat-input > input[type=file] {
+    display: table-column;
+    float: left;
+    width: 9.25%;
+    height: 100%;
+    background-color: #ffcf09;
+    font-weight: 500;
+    font-size: large;
+  }
 
 #chat > main > #chat-input > button {
   display: table-column;
@@ -159,6 +169,7 @@ text-align: center;
   background-color: #ffcf09;
   font-weight: 500;
   font-size: large;
+  padding: 0;
 }
 
 #chat > footer {
@@ -206,7 +217,7 @@ text-align: center;
 #login-back {
   width: 100vw;
   height: 100vh;
-  background-image: url("../img/background.png") !important;
+  background-image: url("../img/background.jpg") !important;
   background-repeat: no-repeat;
 }
 

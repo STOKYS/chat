@@ -11,6 +11,11 @@ This is a really simple chat app (hence the name ChatApp).
 
 Easy to use and even easier to fall in love with!
 
+Web makes use of technologies:
+- [node.js](https://nodejs.org/en/)
+- [socket.io](https://socket.io/)
+- [express](https://expressjs.com/)
+
 
 ## How to use
 
@@ -36,13 +41,17 @@ See? Wasn't that hard afterall
 - Working server
 - Working sign-up and log-in
 - An ID system
+- Cookies
 - Profile
     - Ability to create / see eachothers posts
     - Commenting on posts
     - Editable bio
+    - Adding friends
+    - Viewing friends profile
 - Chat rooms
     - Doesn't store chat data
-
+- Multiplayer Game
+    - Sending friends requests to play
 
 
 ## Upcoming features
@@ -52,11 +61,32 @@ There are many features that I'm currently working on and/or would love to see i
 - Nicer design
 - Responsive design
 - Mobile compability 
+- Implementing regex
+- Icon + Better name
+- Error messages
 - Profile
     - Changeable profile image
-    - Adding friends
+    - Feed save to JSON
 - Chat
     - Ability to post images and links
+    - Fun commands
+- Game
+    - Optimalisation
+
+
+## Latest Update
+
+Update v21.0317:17
+
+Added
+- Adding friends
+- Multiplayer game + invites
+- Dev code
+Updated
+- Changed background image
+- Updated packages
+Fixed
+- *None*
 
 
 ## Q&A
@@ -68,6 +98,11 @@ There are many features that I'm currently working on and/or would love to see i
 **Why should I use this instead of some other chatting apps?**
 
 *You shouldn't.*
+
+**Is it fun to use?**
+
+*YES!*
+
 
 ## Comment
 

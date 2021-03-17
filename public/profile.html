@@ -10,23 +10,46 @@
 </head>
 
 <body>
-    <div id="popup_post" class="popup">
+    <div id="popup_post" class="popup" style="display: none;">
         <h1>Write your post!</h1>
-        <textarea placeholder="Describe yourself here..." rows="10"></textarea>
+        <textarea id="popup_post_input" placeholder="What's on your mind?..." rows="10"></textarea>
+        <div>
+            <button id="popup_post_close">CLOSE</button>
+            <button id="popup_post_submit">SUBMIT</button>
+        </div>
     </div>
-    <div id="popup_room" class="popup">
+    <div id="popup_room" class="popup" style="display: none;">
         <h1>Type room code</h1>
         <form>
-            <label for="popup_room_input">Password:</label><br />
-            <input type="password" id="popup_room_input" name="room" autocomplete="off" required placeholder="Room code"/>
-            <button type="button" id="popup_room_submit">Submit</button>
+            <input type="text" id="popup_room_input" name="room" autocomplete="off" required placeholder="Room code" />
         </form>
+        <div>
+            <button id="popup_room_close">CLOSE</button>
+            <button id="popup_room_submit">SUBMIT</button>
+        </div>
+    </div>
+    <div id="popup_friend" class="popup" style="display: none;">
+        <h1>Type friends name</h1>
+        <form>
+            <input type="text" id="popup_friend_input" name="friend" autocomplete="off" required
+                placeholder="Friends username" />
+        </form>
+        <div>
+            <button id="popup_friend_close">CLOSE</button>
+            <button id="popup_friend_submit">ADD FRIEND</button>
+        </div>
+    </div>
+    <div id="popup_friend_profile" class="popup" style="display: none;">
+        <h1 id="hisname">${Name}</h1>
+        <h2 id="hismail">${Mail}</h2>
+        <p id="hisstatus"> ${status}</p>
+        <button id="popup_friend_profile_close">CLOSE</button>
     </div>
     <div id="navigation">
         <div id="profile">
             <h1 class="title">PROFILE</h1>
             <div class="icon">
-                <img src="img/avatar.jpg">
+                <img src="img/avatar.png">
             </div>
             <div class="info">
                 <h1 id="yourname">${Name}</h1>
@@ -44,7 +67,7 @@
         </div>
         <div id="friends">
             <h1 class="title">FRIENDS</h1>
-            <button class="mainbtn">+ ADD FRIEND</button>
+            <button class="mainbtn" id="createFriend">+ ADD FRIEND</button>
             <hr>
         </div>
     </div>
@@ -54,7 +77,7 @@
         </header>
         <main>
             <div id="postspace">
-                
+
             </div>
         </main>
         <footer>

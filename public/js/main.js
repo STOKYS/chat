@@ -4,15 +4,15 @@ const room = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
 });
 
-socket.emit("profileLoad", document.cookie)
+socket.emit("profileLoad", document.cookie);
 
 socket.on("userFound", (user) => {
-    document.getElementById("yourname").innerText = `User: ${user.name}`;
-    socket.emit("joinRoom", {
-        username: user.name,
-        room: room.room,
-    });
-})
+  document.getElementById("yourname").innerText = `User: ${user.name}`;
+  socket.emit("joinRoom", {
+    username: user.name,
+    room: room.room,
+  });
+});
 
 socket.on("roomUsers", ({ room, users }) => {
   outputRoomName(room);
@@ -86,3 +86,26 @@ function url(text) {
   }
   return `https://www.youtube.com/embed/${fin}`;
 }
+
+/*document.getElementById("inputImg").addEventListener("change", function () {
+  if (this.files && this.files[0]) {
+        var img = document.getElementById("myImg")
+        console.log(`Before anything: ${img}`)
+        img.onload = () => {
+            console.log(img.src)
+            URL.revokeObjectURL(img.src);  // no longer needed, free memory
+            console.log(img.src)
+        }
+        console.log(img.src)
+        img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+        console.log(img.src)
+    }
+    const reader = new FileReader();
+    reader.onload = function() {
+      const bytes = new Uint8Array(this.result);
+      console.log(bytes)
+      socket.emit('image', bytes);
+    };
+    reader.readAsArrayBuffer(this.files[0]);
+}, false);
+*/

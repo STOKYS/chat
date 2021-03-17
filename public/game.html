@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/default_game.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <header>
+
+    </header>
+    <main>
+        <div class="game">
+            <canvas id="cvgame" width="895" height="895"></canvas>
+        </div>
+        <div class="controls">
+            <div class="info">
+                <h1 id="title" style="font-size: 36px">Tic Tac Toe</h1>
+                <h2 id="round" style="font-size: 28px">Round: 1</h2>
+                <h3 id="who" style="font-size: 20px">Crosses Turn</h3>
+            </div>
+            <div class="options" style="height: 150px;">
+                <div class="main_btn">
+                    <button style="background-color: green;" id="start">Start</button>
+                    <button style="background-color: brown;" id="end" disabled>End</button>
+                </div>
+                <div class="side_btn">
+                    <button id="side_grid">Helping grid: off</button>
+                    <button id="side_voice" disabled>Voiceover: off</button>
+                    <button id="gamer_mode"
+                        style="background-image: url('img/gamer.jpg'); background-size: cover; color: white; font-family: 'Audiowide', cursive !important;  background-position: center;"><abbr
+                            title="Are you a true gamer?!">GAMER MODE</abbr></button>
+                    <p id="gridText">Grid size: 28</p>
+                    <p id="winText">Points to win: 5</p>
+                    <input id="slider_grid" type="range" min="3" max="100" value="28" disabled>
+                    <input id="slider_win" type="range" min="3" max="8" value="5" disabled>
+                </div>
+            </div>
+            <div class="data">
+                <div id="console">
+                    <h1>Console</h1>
+                </div>
+                <div>
+                    <table>
+                        <tr>
+                            <th>Winner</th>
+                            <th>Rounds</th>
+                            <th>Options</th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/qs/6.9.6/qs.min.js" crossorigin="anonymous"></script>
+<script src="/socket.io/socket.io.js"></script>
+    <script src="js/setup.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/check.js"></script>
+</body>
+
+</html>
