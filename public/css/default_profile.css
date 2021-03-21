@@ -87,6 +87,7 @@
     overflow-y: auto;
 }
 
+
 .title {
     border-bottom: 1px solid black;
     font-family: 'Roboto Mono';
@@ -411,3 +412,50 @@ footer {
     margin-top: 50px;
 }
 
+
+@media only screen and (max-width: 1080px) {
+    * {
+        overflow: auto;
+    }
+
+    #navigation {
+        width: 100%;
+        border: 0.1vh solid black;
+        height: 100vh;
+        background-color: rgb(25, 25, 25);
+    }
+    
+    #profile {
+        width: 100%;
+        margin: auto;
+        margin-top: 2.5vh;
+        height: 25%;
+        padding: 0px;
+        border: solid #ffcf09 1px;
+    }
+    
+    #chatrooms {
+        width: 100%;
+        margin: auto;
+        margin-top: 2.5vh;
+        height: 33%;
+        padding: 0px;
+        border: solid #ffcf09 1px;
+        overflow-y: auto;
+    }
+    
+    #friends {
+        width: 100%;
+        margin: auto;
+        height: 33%;
+        padding: 0px;
+        border: solid #ffcf09 1px;
+        overflow-y: auto;
+    }
+    
+    #board {
+        width: 100%;
+        background-color: rgb(40, 40, 40);
+        height: 100vh;
+    }
+}

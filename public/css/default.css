@@ -74,9 +74,8 @@ text-align: center;
 #navigation {
   float: left;
   display: table;
-  width: 19.9vw;
-  border: 0.1vh solid black;
-  height: 99.8vh;
+  width: 20%;
+  height: 100vh;
   background-color: rgb(25, 25, 25);
 }
 
@@ -101,9 +100,8 @@ text-align: center;
 #chat {
   float: left;
   display: table;
-  width: 79.9vw;
-  border: 0.1vh solid black;
-  height: 99.8vh;
+  width: 80%;
+  height:100vh;
 }
 
 #chat > * {
@@ -126,24 +124,22 @@ text-align: center;
 
 #chat > main > #chat-space {
   overflow-y: visible;
-  max-height: 85vh;
-  height: 81vh;
+  max-height: 90vh;
+  height: 90vh;
   width: 100%;
-  padding-top: 2vh;
-  padding-bottom: 2vh;
 }
 
-#chat > main > #chat-input {
-  height: 5%;
+#chat > footer > #chat-input {
+  height: 100%;
   width: 100%;
   border-top: 1px solid #ffcf09;
 }
 
-#chat > main > #chat-input > input[type=text] {
+#chat > footer > #chat-input > input[type=text] {
   display: table-column;
   float: left;
   height: 100%;
-  width: 80%;
+  width: 90%;
   background-color: black;
   outline: none;
   padding-left: 5px;
@@ -151,17 +147,7 @@ text-align: center;
   font-size: large;
 }
 
-#chat > main > #chat-input > input[type=file] {
-    display: table-column;
-    float: left;
-    width: 9.25%;
-    height: 100%;
-    background-color: #ffcf09;
-    font-weight: 500;
-    font-size: large;
-  }
-
-#chat > main > #chat-input > button {
+#chat > footer > #chat-input > button {
   display: table-column;
   float: left;
   width: 9.25%;
@@ -220,6 +206,7 @@ text-align: center;
   background-image: url("../img/background.jpg") !important;
   background-repeat: no-repeat;
 }
+
 
 #login-box,
 #create,
@@ -291,4 +278,22 @@ button {
 
 .gg > form > button:hover {
   background-color: rgba(255, 207, 9, 0.8);
+}
+
+
+@media only screen and (max-width: 1080px) {
+    #login-box,
+    #create,
+    #room-select {
+      position: absolute;
+      padding: 2vh;
+      margin-top: 5vh;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.75);
+      width: 90vw;
+      height: 80vh;
+      border: 1px solid #ffcf09;
+      border-left-width: 5px;
+      border-radius: 0px 25px 0px 0px;
+    }
 }

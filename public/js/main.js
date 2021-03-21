@@ -24,8 +24,10 @@ socket.on("message", (message, toAll) => {
 });
 
 document.getElementById("chat-input").addEventListener("submit", (event) => {
-  let msg = document.getElementById("input").value;
-  socket.emit("chatMessage", msg);
+  if (document.getElementById("input").value != "") {
+    let msg = document.getElementById("input").value;
+    socket.emit("chatMessage", msg);
+  }
   document.getElementById("chat-input").reset();
   event.preventDefault();
 });

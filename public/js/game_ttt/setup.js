@@ -14,18 +14,17 @@ const room = Qs.parse(location.search, {
     ignoreQueryPrefix: true,
 });
   
-socket.emit("gameLoad", document.cookie);
+socket.emit("gameLoad_ttt", document.cookie);
   
-socket.on("userGameFound", (user) => {
-    socket.emit("joinGameRoom", {
+socket.on("userGameFound_ttt", (user) => {
+    socket.emit("joinGameRoom_ttt", {
       username: user.name,
       room: room.room,
     });
 });
 
-socket.on("yourplace", (player) => {
+socket.on("yourplace_ttt", (player) => {
     you.player = player
-    console.log(you)
 })
 
 let opt_grid = false
@@ -58,10 +57,10 @@ red.src = "img/red.png"
 // main buttons
 
 startBtn.addEventListener("click", function () {
-    socket.emit("gameStarted", you)
+    socket.emit("gameStarted_ttt", you)
 })
 
-socket.on("gameStartedClient", (user)=>{
+socket.on("gameStartedClient_ttt", (user)=>{
     startBtn.disabled = true
     endBtn.disabled = false
     game_started = true
@@ -74,10 +73,10 @@ socket.on("gameStartedClient", (user)=>{
 })
 
 endBtn.addEventListener("click", function () {
-    socket.emit("gameEnded", you)
+    socket.emit("gameEnded_ttt", you)
 })
 
-socket.on("gameEndedClient", (user)=>{
+socket.on("gameEndedClient_ttt", (user)=>{
     startBtn.disabled = false
     endBtn.disabled = true
     game_started = false
@@ -86,8 +85,8 @@ socket.on("gameEndedClient", (user)=>{
         let audio = new Audio(`audio/${folder}/end.mp3`);
         audio.play();
     }
-    gridSld.disabled = false
-    winSld.disabled = false
+    //gridSld.disabled = false
+    //winSld.disabled = false
 })
 
 // side buttons

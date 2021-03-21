@@ -42,6 +42,7 @@ See? Wasn't that hard afterall
 - Working sign-up and log-in
 - An ID system
 - Cookies
+- Regex
 - Profile
     - Ability to create / see eachothers posts
     - Commenting on posts
@@ -61,7 +62,6 @@ There are many features that I'm currently working on and/or would love to see i
 - Nicer design
 - Responsive design
 - Mobile compability 
-- Implementing regex
 - Icon + Better name
 - Error messages
 - Profile
@@ -76,17 +76,15 @@ There are many features that I'm currently working on and/or would love to see i
 
 ## Latest Update
 
-Update v21.0317:17
+Update v21.0321:14
 
-Added
-- Adding friends
-- Multiplayer game + invites
-- Dev code
-Updated
-- Changed background image
-- Updated packages
-Fixed
-- *None*
+- Added
+    - Regex to login
+- Updated
+    - Updated Tic Tac Toe game
+    - Chat + Post + Post comment - Can't send empty messages
+- Fixed
+    - Style issues on laptops 
 
 
 ## Q&A

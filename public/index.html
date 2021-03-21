@@ -14,26 +14,26 @@
         <div class="gg" id="create" style="display: none">
             <h1>Welcome to ChatApp</h1>
             <h2>Create New Account:</h2>
-            <form>
+            <form id="form_create">
                 <label for="sname">Username:</label><br />
                 <input type="text" id="sname" name="name" autocomplete="off" required /><br />
                 <label for="smail">E-mail:</label><br />
                 <input type="email" id="smail" name="mail" autocomplete="off" required /><br />
                 <label for="spwd">Password:</label><br />
                 <input type="password" id="spwd" name="pwd" autocomplete="off" required />
-                <button type="button" id="created">Submit</button>
+                <button type="submit" id="created">Submit</button>
             </form>
         </div>
         <div class="gg" id="login-box">
             <h1>Welcome to ChatApp</h1>
             <h2>Please log-in to continue:</h2>
-            <form action="chat.html">
+            <form action="chat.html" id="form_login">
                 <label for="mail">E-mail:</label><br />
                 <input type="email" id="mail" name="mail" autocomplete="off" required /><br />
                 <label for="pwd">Password:</label><br />
                 <input type="password" id="pwd" name="pwd" autocomplete="off" required />
                 <small>By logging-in you give us permission to use cookies</small>
-                <button type="button" id="login">Submit</button>
+                <button type="submit" id="login">Submit</button>
             </form>
             <form>
                 <button id="sign" type="button">Create Account</button>

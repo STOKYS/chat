@@ -13,7 +13,6 @@ requestAnimationFrame(update)
 
 function update() {
     if ((Date.now() - timeOne) >= 20) {
-        console.log("hey")
         timeOne = Date.now()
         game.update()
     }
@@ -33,14 +32,14 @@ canvas.addEventListener("click", function () {
       document.getElementById("who").innerText = `${(game.player == 1) ? "Circles" : "Crosses"} Turn`
       tiles.push(pushed)
       game.newRound()
-      socket.emit("gameNewRound", (tiles))
+      socket.emit("gameNewRound_ttt", (tiles))
     } else {
       message("Tile is already occupied or invalid")
     }
   }
 })
 
-socket.on("gameNewRoundClient", (imptiles)=>{
+socket.on("gameNewRoundClient_ttt", (imptiles)=>{
     tiles = imptiles
     game.newRound()
 })
@@ -86,7 +85,7 @@ function writeGrid() {
 
 function showSelection() {
   let sele = (you.player == 1) ? "cross" : "circle"
-  ctx.drawImage(eval(sele), (gridX * gridSize), (gridY * gridSize), gridSize, gridSize)
+  if (you.player == game.player) ctx.drawImage(eval(sele), (gridX * gridSize), (gridY * gridSize), gridSize, gridSize)
 }
 
 function drawGrid() {
@@ -172,7 +171,6 @@ function win(winner) {
 }
 
 function table(winner){
-  console.log("TT")
   document.getElementsByTagName("TD")[wins - 2].innerText = `${(winner == 1) ? "Cross" : "Circle"}`
   document.getElementsByTagName("TD")[wins - 1].innerText = `${game.round}`
   document.getElementsByTagName("TD")[wins].innerText = `Grid: ${gridNum}, PtW: ${pointsToWin}`
@@ -191,7 +189,7 @@ function message(text) {
   document.getElementById("console").scroll(0, 999999)
 }
 
-socket.on("serverConsole", (text)=> {
+socket.on("serverConsole_ttt", (text)=> {
     console.log(text)
     message(text)
 })

@@ -83,10 +83,12 @@ document.getElementById("createPost").addEventListener("click", function () {
 document
   .getElementById("popup_post_submit")
   .addEventListener("click", function () {
-    let x = document.getElementById("popup_post_input").value;
-    socket.emit("postCreate", { text: x, user: you.name });
-    document.getElementById("popup_post").style.display = "none";
-    document.getElementById("popup_post_input").value = "";
+    if (document.getElementById("popup_post_input").value != ''){
+        let x = document.getElementById("popup_post_input").value;
+        socket.emit("postCreate", { text: x, user: you.name });
+        document.getElementById("popup_post").style.display = "none";
+        document.getElementById("popup_post_input").value = "";
+    }
   });
 
 document
@@ -110,9 +112,11 @@ function outputPost(data, id) {
 }
 
 function createCommentik(id) {
-  let x = document.getElementById(`inputcomm_${id}`).value;
-  document.getElementById(`inputcomm_${id}`).value = "";
-  socket.emit("postComment", { text: x, user: you.name, id: id });
+    if ( document.getElementById(`inputcomm_${id}`).value != ''){
+        let x = document.getElementById(`inputcomm_${id}`).value;
+        document.getElementById(`inputcomm_${id}`).value = "";
+        socket.emit("postComment", { text: x, user: you.name, id: id });
+    }
 }
 
 socket.on("postCommented", (data) => {
@@ -175,14 +179,15 @@ function gameInvite(him) {
     fin += awch.charAt(Math.floor(Math.random() * 52));
   }
   socket.emit("sendingInvite", { him: him, you: you.name, code: fin });
-  window.open(`${window.location.href.slice(0, -12)}game.html?room=${fin}`);
+  window.open(`${window.location.href.slice(0, -12)}game_ttt.html?room=${fin}`);
+  //window.open(`${window.location.href.slice(0, -12)}game_check.html?room=${fin}`);
 }
 
 socket.on("gameInviteAcc", ({t, f, c}) => {
     if (t == you.name){
         if (confirm(`${f} invited you to a game, will you accept?`)) {
-            // Save it!
-            window.open(`${window.location.href.slice(0, -12)}game.html?room=${c}`);
+            window.open(`${window.location.href.slice(0, -12)}game_ttt.html?room=${c}`);
+            //window.open(`${window.location.href.slice(0, -12)}game_check.html?room=${fin}`);
           }
     }
 })
